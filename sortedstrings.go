@@ -1,9 +1,5 @@
 package handy
 
-import (
-	"fmt"
-)
-
 // SortedStrings stores strings, assumed sorted.
 type SortedStrings []string
 
@@ -16,10 +12,6 @@ func (ss SortedStrings) Minus(yass SortedStrings) []string {
 		// search through ss
 		region := yass[l:r]
 		index := region.BinarySearch(word)
-
-		fmt.Println(index)
-		fmt.Println(word)
-		fmt.Println(region)
 		if index >= len(region) || word != region[index] {
 			ret = append(ret, word)
 		}
