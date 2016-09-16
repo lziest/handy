@@ -26,8 +26,8 @@ func (ss SortedStrings) Minus(yass SortedStrings) []string {
 // index where the word can be inserted without breaking ordering.
 func (ss SortedStrings) BinarySearch(word string) int {
 	l, r := 0, len(ss)-1
-	for l >= 0 && r < len(ss) && l <= r {
-		mid := (l + r) >> 1
+	for l <= r {
+		mid := l + (r-l)>>1
 		if ss[mid] == word {
 			return mid
 		} else {
