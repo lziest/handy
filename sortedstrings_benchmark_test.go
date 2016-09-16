@@ -29,7 +29,7 @@ func readLines(path string) ([]string, error) {
 	return lines, scanner.Err()
 }
 
-func BenchmarkBinarySearch(b *testing.B) {
+func BenchmarkBuiltinBinarySearch(b *testing.B) {
 	words, err := readLines(dictFile)
 	if err != nil {
 		b.Fatal(err)
@@ -47,7 +47,7 @@ func BenchmarkBinarySearch(b *testing.B) {
 	}
 }
 
-func BenchmarkBuiltinBinarySearch(b *testing.B) {
+func BenchmarkBinarySearch(b *testing.B) {
 	words, err := readLines(dictFile)
 	if err != nil {
 		b.Fatal(err)
