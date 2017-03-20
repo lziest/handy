@@ -32,6 +32,7 @@ func (l *LinkedList) Insert(x *LinkedListNode) {
 
 func (l *LinkedList) Reverse() {
 	curr := l.Header.Next
+	l.Header.Next = nil
 	for curr != nil {
 		next := curr.Next
 		l.Insert(curr)

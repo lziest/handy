@@ -42,4 +42,8 @@ func TestLinkedListReverse(t *testing.T) {
 		}
 		next = next.Next
 	}
+
+	if next != nil {
+		t.Fatal("Bad Reverse")
+	}
 }
