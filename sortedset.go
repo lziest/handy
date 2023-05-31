@@ -103,11 +103,15 @@ type SortedSet[T constraints.Ordered] struct {
 	capacity int
 }
 
-func NewOrderedSet[T constraints.Ordered](capacity int) *SortedSet[T] {
+func NewSortedSet[T constraints.Ordered](capacity int) *SortedSet[T] {
 	return &SortedSet[T]{
 		list:     NewSortedList[T](),
 		capacity: capacity,
 	}
+}
+
+func (s *SortedSet[T]) String() string {
+	return s.list.String()
 }
 
 func (s *SortedSet[T]) Insert(x T) bool {
@@ -123,7 +127,7 @@ func (s *SortedSet[T]) Remove(x T) bool {
 }
 
 func (s *SortedSet[T]) Union(o *SortedSet[T]) *SortedSet[T] {
-	ret := NewOrderedSet[T](s.capacity + o.capacity)
+	ret := NewSortedSet[T](s.capacity + o.capacity)
 	sIndex := s.list.Head
 	oIndex := o.list.Head
 	for sIndex.Next != nil || oIndex.Next != nil {
@@ -166,7 +170,7 @@ func (s *SortedSet[T]) Union(o *SortedSet[T]) *SortedSet[T] {
 }
 
 func (s *SortedSet[T]) Intersect(o *SortedSet[T]) *SortedSet[T] {
-	ret := NewOrderedSet[T](s.capacity + o.capacity)
+	ret := NewSortedSet[T](s.capacity + o.capacity)
 	sIndex := s.list.Head
 	oIndex := o.list.Head
 	for sIndex.Next != nil || oIndex.Next != nil {
