@@ -41,7 +41,7 @@ func TestCalatan(t *testing.T) {
 	for _, c := range testcases {
 		r := CatalanNumber(c.n)
 		if r.Cmp(c.c) != 0 {
-			t.Fatal("bad Catalan number: %v, got %v, expected %v", c.n, r, c.c)
+			t.Fatalf("bad Catalan number: %v, got %v, expected %v", c.n, r, c.c)
 		}
 
 	}
