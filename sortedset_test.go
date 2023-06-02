@@ -107,3 +107,22 @@ func TestSortedSet(t *testing.T) {
 		}
 	}
 }
+
+func TestSortedMultiSet(t *testing.T) {
+	sa := NewSortedSet[int](10)
+	sb := NewSortedSet[int](10)
+	for _, x := range []int{1, 2, 3, 3} {
+		sa.Insert(x)
+	}
+	for _, x := range []int{2, 3, 3, 4} {
+		sb.Insert(x)
+	}
+	u := sa.Union(sb)
+	i := sa.Intersect(sb)
+	if u.String() != "{1 2 3 3 4}" {
+		t.Errorf("Want: {1 2 3 3 4}, got: %s", u)
+	}
+	if i.String() != "{2 3 3}" {
+		t.Errorf("Want: {2 3 3}, got: %s", i)
+	}
+}
